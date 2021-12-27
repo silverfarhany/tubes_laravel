@@ -19,13 +19,14 @@
         <!--begin::Title-->
         <div class="pb-13 pt-lg-0 pt-5">
             <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Add Person</h3>
-            <p class="text-muted font-weight-bold font-size-h4">Please Add Member's details</p>
+            <p class="text-muted font-weight-bold font-size-h4">Please Add Person's details</p>
         </div>
         <!--end::Title-->
 
         <!--Form dari addMember-->
         <!--begin::Form group 'fullname'-->
         <div class="form-group">
+            {{ csrf_field() }}
             <input class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6 @error('fullname') is-invalid @enderror" type="text" placeholder="Fullname" name="fullname" autocomplete="off" />
         </div>
         @error('fullname')
@@ -59,7 +60,7 @@
         
         <!--begin::Form group-->
         <div class="form-group">
-            <select class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6" type="select" placeholder="Course Program" name="cprogram" autocomplete="off" />
+            <select class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6" type="select" placeholder="Add as" name="roll" autocomplete="off" />
             <option value="1">Member</option>
             <option value="2">Teacher</option>            
             </select>

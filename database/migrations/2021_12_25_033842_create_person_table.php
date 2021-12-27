@@ -17,7 +17,7 @@ class CreatePersonTable extends Migration
             $table->id();
             $table->string('name');
             $table->tinyInteger('roll');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->tinyInteger('status');            
             $table->timestamps();
         });

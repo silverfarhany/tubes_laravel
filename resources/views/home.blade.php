@@ -610,27 +610,32 @@
 								<!--end::Row-->
 								<a type="button" class="btn font-weight-bold btn-light-success mr-2" href="/addMember">Add Person</a>
 								<br> </br>	
-								<h2 for="table table-dark rounded" class="center"> Data Person</h2>			
-<table class="table table-dark rounded pt-6" style="center">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Roll</th>
-            <th scope="col">Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Nick</td>
-            <td>Stone</td>
-            <td>
-                <span class="label label-inline label-light-primary font-weight-bold">
-                    Graduate
-                </span>
-            </td>
-        </tr>       
-    </tbody>
-</table>
-@extends('footer')									
+								<h2 for="table table-dark rounded" class="center"> Data Person</h2>	
+								@if ($person->count() > 0)		
+									<table class="table table-dark rounded pt-6" style="center">
+										<thead>
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Name</th>
+												<th scope="col">Roll</th>
+												<th scope="col">Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php $no = 1 ?>
+											@foreach($person as $Person)
+											<tr>
+												<th scope="row">{{ $no++ }}</th>
+												<td>{{$Person->name}}</td>
+												<td>{{ $Person->roll }}</td>
+												<td>
+													<span class="label label-inline label-light-primary font-weight-bold">
+														{{ $Person->status }}
+													</span>
+												</td>
+											</tr>   
+											@endforeach    
+										</tbody>
+									</table>
+									@endif
+									@extends('footer')									

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
+    protected $fillable = ['id','name','email','roll','status'];
+    protected $table = 'person';
+    
     public function getAccount(){
         return $this->belongsTo('App\Account', 'account_id', 'id');
     }
@@ -15,8 +18,7 @@ class Person extends Model
         return $this->belongsTo('App\Score', 'score_id', 'id');
     }
     
-    static public function create(){
-
-    }
+        
+    
 }
 

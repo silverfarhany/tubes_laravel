@@ -6,20 +6,35 @@ use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
-
 class memberController extends BaseController
 {
     public function index()
     {
-       return view('addMember');
+       $person = Person::get();
+        return view('addMember');
     }
+
 
     public function storeDataPost(Request $request){
         $validated = $request->validate([
             'fullname' => 'required|max:255',
-            'email' => 'required|email:dns',
+            'email' => 'required|email:dns|unique:person',
             'startdate' => 'required|date'
         ]);
-        Person::create($validated);
+
+        $addPerson = new Person([
+            'name' => $request->get('fullname'),
+            'email' => $request->get('email'),
+            'start' => $request->get('startdate'),
+            'roll' => $request->get('roll'),  
+            'status' => 1      
+        ]);
+       
+        $addPerson->save();
+        // return redirect()->route('/addMember')->with('succes', 'Add Succes');
+        
+        // $post = new Person;
+        // $post -> $validated;
+        // $post -> save();
     }
 }
