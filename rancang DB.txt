@@ -1,0 +1,5 @@
+person : id_person(pk),roll, nama, email, status (1-teach, 2-on going, 3-graduate, 4-discontinous), start date, end date
+
+akun : id_akun(pk-ai), id_person(fk),id_roll, email, password
+
+nilai : id_nilai(pk-ai), id_person (fk), week1, week2, week3, week4, finaltask, finalscore
