@@ -20,43 +20,43 @@
                                      </h3>
                                     </div>
                                     <!--begin::Form-->
-                                    <form class="form" action="/inputScore" method="post">
+                                    <form action="/inputScore" method="post" class="form" >
                                       @csrf
                                      <div class="card-body">
                                       <div class="form-group form-group-last">
                                         <div class="form-group">
-                                          {{ csrf_field() }}
                                             <label>Member's Name</label>
-                                            <select class="form-control form-control-solid" name="fullname">
+                                            <select class="form-control form-control-solid" name="id">
                                               @foreach ($persons as $person)
-                                              <option value="{{ $person->id }}">{{ $person->name }}</option>
+                                              <option value={{ $person->id }}>{{ $person->name }}</option>
                                               @endforeach
                                             </select>
                                            </div>                                       
                                       <div class="form-group">
                                        <label>First Task Score</label>
-                                       <input type="number" class="form-control form-control-solid" placeholder="Input score" name="1task"/>
+                                       <input type="number" class="form-control form-control-solid" placeholder="Input score" name="firsttask" required/>
+                                       @error('firsttask')
+                                        <div class="alert alert-danger">
+                                          {{ $message }}
+                                        </div>
+                                       @enderror
                                       </div>   
                                       <div class="form-group">
                                         <label>Second Task Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="2task"/>
+                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="scndtask" required/>
                                        </div>   
                                        <div class="form-group">
                                         <label>Third Task Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="3task"/>
+                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="thrdtask" required/>
                                        </div>  
                                        <div class="form-group">
                                         <label>Fourth Task Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="4task"/>
+                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="frthtask" required/>
                                        </div>   
                                        <div class="form-group">
                                         <label>Final Task Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="finaltask"/>
-                                       </div>  
-                                       {{-- <div class="form-group">
-                                        <label>Final Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" readonly value="$finalscore"/>
-                                       </div>                                       --}}                                    
+                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="finaltask" required/>
+                                       </div>                                                                                                                
                                      <div class="card-footer">
                                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                       <button type="reset" class="btn btn-secondary">Cancel</button>

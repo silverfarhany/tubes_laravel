@@ -18,29 +18,29 @@ class ScoreController extends Controller
     
     public function inputScore(Request $request)
     {
-        $task1 = $request->firsttask;
-        $task2 = $request->scndtask;
-        $task3 = $request->thrdtask;
-        $task4 = $request->frthtask;
-        $finalscore = $task1+$task2+$task3+$task4;
-
-        $validated = $request->validate([
-            'fullname' => 'required|max:255|exists:Person,name',
+        $request->validate([
             'firsttask' => 'required',
             'scndtask' => 'required',
             'thrdtask' => 'required',
             'frthtask' => 'required',           
             'finaltask' => 'required'           
         ]);
-        
+
+        $task1 = $request->firsttask;
+        $task2 = $request->scndtask;
+        $task3 = $request->thrdtask;
+        $task4 = $request->frthtask;
+        $finaltask = $request->finaltask;
+        $finalscore = ($task1+$task2+$task3+$task4+$finaltask)/5;
+
         $addScore = new Score([    
-            'person_id' => $request->get('$person->id'),
-            'week1' => $request->get('firsttask'),
-            'week2' => $request->get('scndtask'),
-            'week3' => $request->get('thrdtask'),
-            'week4' => $request->get('frthtask'),
-            'finaltask' => $request->get('finaltask'),
-            'finalscore' => $request->get('$finalscore')
+            'person_id' => $request->id,
+            'week1' => $task1,
+            'week2' => $task2,
+            'week3' => $task3,
+            'week4' => $task4,
+            'finaltask' => $request->finaltask,
+            'finalscore' => $finalscore
         ]);
 
         $addScore->save();

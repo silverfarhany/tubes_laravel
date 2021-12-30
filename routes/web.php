@@ -29,9 +29,13 @@ Route::get('/regis', [RegisController::class, 'regis'])->name('regis');
 Route::post('/', [RegisController::class, 'actionregis'])->name('actionregis');
 
 Route::get('/home', [HomeController::class, 'home'])->name('home')->name('home');
+// Route::get('/home', [HomeController::class, 'memberlist'])->name('memberlist')->name('memberlist');
+
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 Route::get('/inputScore', [ScoreController::class, 'Score'])->name('Score');
 Route::post('/inputScore', [ScoreController::class, 'inputScore'])->name('inputScore');
 Route::get('/addMember', [memberController::class, 'index'])->name('index');
 Route::post('/addMember', [memberController::class, 'storeDataPost'])->name('storeDataPost');
+
+

@@ -1,0 +1,9 @@
+Admin & Teacher :
+- ganti bagian roll & status
+- bikin tampilan buat nampilin score table
+- nampilin data nilai
+- fungsiin login
+- fungsiin logout
+
+Member :
+-Bikin halaman dashboard aja, isi nya tabel nilai member ybs

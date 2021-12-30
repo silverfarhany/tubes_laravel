@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Score extends Model
 {
-    protected $fillable = ['id','1task','2task','3task','4task','finaltask','finalscore'];
+    protected $fillable = ['id','person_id','week1','week2','week3','week4','finaltask','finalscore'];
     protected $table = 'score';
 
     public function getPerson(){
