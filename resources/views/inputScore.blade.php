@@ -20,50 +20,45 @@
                                      </h3>
                                     </div>
                                     <!--begin::Form-->
-                                    <form class="form">
+                                    <form class="form" action="/inputScore" method="post">
+                                      @csrf
                                      <div class="card-body">
                                       <div class="form-group form-group-last">
                                         <div class="form-group">
+                                          {{ csrf_field() }}
                                             <label>Member's Name</label>
-                                            <select class="form-control form-control-solid">
-                                             <option>1</option>
-                                             <option>2</option>
-                                             <option>3</option>
-                                             <option>4</option>
-                                             <option>5</option>
+                                            <select class="form-control form-control-solid" name="fullname">
+                                              @foreach ($persons as $person)
+                                              <option value="{{ $person->id }}">{{ $person->name }}</option>
+                                              @endforeach
                                             </select>
-                                           </div>
+                                           </div>                                       
                                       <div class="form-group">
                                        <label>First Task Score</label>
-                                       <input type="number" class="form-control form-control-solid" placeholder="Input score"/>
+                                       <input type="number" class="form-control form-control-solid" placeholder="Input score" name="1task"/>
                                       </div>   
                                       <div class="form-group">
                                         <label>Second Task Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score"/>
+                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="2task"/>
                                        </div>   
                                        <div class="form-group">
                                         <label>Third Task Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score"/>
+                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="3task"/>
                                        </div>  
                                        <div class="form-group">
                                         <label>Fourth Task Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score"/>
+                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="4task"/>
                                        </div>   
                                        <div class="form-group">
                                         <label>Final Task Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score"/>
+                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" name="finaltask"/>
                                        </div>  
-                                       <div class="form-group">
+                                       {{-- <div class="form-group">
                                         <label>Final Score</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="Input score"/>
-                                       </div>                                      
-                                      <div class="form-group">
-                                       <label for="exampleTextarea">Message for your member</label>
-                                       <textarea class="form-control form-control-solid" rows="3"></textarea>
-                                      </div>
-                                     </div>
+                                        <input type="number" class="form-control form-control-solid" placeholder="Input score" readonly value="$finalscore"/>
+                                       </div>                                       --}}                                    
                                      <div class="card-footer">
-                                      <button type="reset" class="btn btn-primary mr-2">Submit</button>
+                                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                       <button type="reset" class="btn btn-secondary">Cancel</button>
                                      </div>
                                     </form>

@@ -23,14 +23,15 @@ Route::get('/', function () {
 });
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
-Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+Route::post('/login', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
 Route::get('/regis', [RegisController::class, 'regis'])->name('regis');
-Route::post('actionregis', [RegisController::class, 'actionregis'])->name('actionregis');
+Route::post('/', [RegisController::class, 'actionregis'])->name('actionregis');
 
-Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/home', [HomeController::class, 'home'])->name('home')->name('home');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
-Route::get('/inputScore', [ScoreController::class, 'inputScore'])->name('inputScore');
+Route::get('/inputScore', [ScoreController::class, 'Score'])->name('Score');
+Route::post('/inputScore', [ScoreController::class, 'inputScore'])->name('inputScore');
 Route::get('/addMember', [memberController::class, 'index'])->name('index');
 Route::post('/addMember', [memberController::class, 'storeDataPost'])->name('storeDataPost');

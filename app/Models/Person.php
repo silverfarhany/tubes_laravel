@@ -11,14 +11,16 @@ class Person extends Model
     protected $table = 'person';
     
     public function getAccount(){
-        return $this->belongsTo('App\Account', 'account_id', 'id');
+        return $this->belongsTo(Account::class);
     }
 
     public function getScore(){
-        return $this->belongsTo('App\Score', 'score_id', 'id');
+        return $this->belongsTo(Score::class);
     }
     
         
     
 }
 
+
+// ('App\Account', 'account_id', 'id');

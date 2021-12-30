@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Session;
+use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\LoginController;
+
 
 
 class LoginController extends Controller
@@ -21,16 +22,14 @@ class LoginController extends Controller
 
     public function actionlogin(Request $request)
     {
-        $data = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-        ];
+        $login = $request->validate([
+            'email' => 'required|email:dns|exists:Account,email',
+            'password' => 'required',
+        ]);
+        if (auth()->attempt($login)) {
+            //$request->session()->regenerate();
 
-        if (Auth::Attempt($data)) {
-            return redirect('home');
-        }else{
-            Session::flash('error', 'Email atau Password Salah');
-            return redirect('/');
+            //return redirect()->intended('/home');
         }
     }
 

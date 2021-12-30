@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
+    protected $fillable = ['id','email','password'];
+    protected $table = 'account';
+    public $timestamps = false;
     public function getPerson(){
-        return $this->belongsTo('App\Person', 'person_id', 'id');
+        return $this->belongsTo(Person::class);
         }
 }

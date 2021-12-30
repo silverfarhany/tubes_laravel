@@ -611,7 +611,7 @@
 								<a type="button" class="btn font-weight-bold btn-light-success mr-2" href="/addMember">Add Person</a>
 								<br> </br>	
 								<h2 for="table table-dark rounded" class="center"> Data Person</h2>	
-								@if ($person->count() > 0)		
+								{{-- @if ($person->count() > 0)		 --}}
 									<table class="table table-dark rounded pt-6" style="center">
 										<thead>
 											<tr>
@@ -622,7 +622,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<?php $no = 1 ?>
+											{{-- <?php $no = 1 ?>
 											@foreach($person as $Person)
 											<tr>
 												<th scope="row">{{ $no++ }}</th>
@@ -633,9 +633,9 @@
 														{{ $Person->status }}
 													</span>
 												</td>
-											</tr>   
-											@endforeach    
+											</tr>    --}}
+											{{-- @endforeach     --}}
 										</tbody>
 									</table>
-									@endif
+									{{-- @endif --}}
 									@extends('footer')									

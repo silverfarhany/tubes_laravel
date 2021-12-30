@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'users', 
     ],
 
     /*
@@ -64,13 +64,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
@@ -95,6 +89,7 @@ return [
         ],
     ],
 
+    
     /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout
@@ -107,5 +102,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];
