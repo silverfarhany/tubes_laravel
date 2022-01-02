@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Session;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Person;
 use App\Models\Score;
+use App\Models\Person;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ScoreController extends Controller
 {
@@ -47,4 +48,22 @@ class ScoreController extends Controller
 
         }
     
+    public function showScore(Request $request)
+    {
+        $score = DB::table('score')->select('id','person_id','week1','week2','week3','week4','finaltask','finalscore')->get();
+
+        return view('showScore')->with('score', $score);   
+        
+    }
+
+    public function delete($id)
+    {
+        $post = Score::find($id);
+
+        //$post->foreign('person_id')->references('id')->on('person');
+        $post->delete();
+        //return redirect('/home');
+    
+    }
+
 }    

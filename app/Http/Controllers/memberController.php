@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller as BaseController;
 
 class memberController extends BaseController
@@ -31,10 +32,6 @@ class memberController extends BaseController
         ]);
        
         $addPerson->save();
-        // return redirect()->route('/addMember')->with('succes', 'Add Succes');
-        
-        // $post = new Person;
-        // $post -> $validated;
-        // $post -> save();
     }
+
 }

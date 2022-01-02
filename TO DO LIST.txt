@@ -1,9 +1,13 @@
 Admin & Teacher :
-- ganti bagian roll & status
-- bikin tampilan buat nampilin score table
-- nampilin data nilai
+- menampilkan nama dari person_id yang ada
 - fungsiin login
 - fungsiin logout
+- Update data person (only admin)
+- Delete data person (only admin)
+- hapus button add person utk teacher
+- Update data Score
+- Delete data Score
+
 
 Member :
 -Bikin halaman dashboard aja, isi nya tabel nilai member ybs

@@ -26,6 +26,7 @@
 												<th scope="col">Name</th>
 												<th scope="col">Roll</th>
 												<th scope="col">Status</th>
+												<th scope="col">Action</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -34,11 +35,27 @@
 											<tr>
 												<th scope="row">{{ $no++ }}</th>
 												<td>{{$Person->name}}</td>
-												<td>{{ $Person->roll }}</td>
+												<td>										
+													@if( $Person->roll == 1)
+													Member														
+													@else
+													Teacher																								
+													@endif 												
+												</td>
 												<td>
 													<span class="label label-inline label-light-primary font-weight-bold">
-														{{ $Person->status }}
+														@if($Person->status == 1) 
+															Active
+														@elseif($Person->status == 2)
+															Graduate
+														@else
+															Discontinues
+														@endif
 													</span>
+												</td>
+												<td>
+													<a type="button" class="btn btn-transparent-warning font-weight-bold mr-2" href="/home/edit/{{ $Person->id }}"> Edit </a>
+													<a type="button" class="btn btn-transparent-danger font-weight-bold mr-2" href="{{ route('home', ['id' => $Person->id ]) }}"> Delete </a>
 												</td>
 											</tr>  
 											@endforeach

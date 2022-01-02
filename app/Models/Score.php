@@ -12,7 +12,7 @@ class Score extends Model
 
     public function getPerson(){
         return $this->belongsTo(Person::class);
-        // ('App\Person', 'person_id', 'id');
+        
         }
 
 }
