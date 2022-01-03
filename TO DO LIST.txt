@@ -6,7 +6,6 @@ Admin & Teacher :
 - Delete data person (only admin)
 - hapus button add person utk teacher
 - Update data Score
-- Delete data Score
 
 
 Member :

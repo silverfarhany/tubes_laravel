@@ -22,11 +22,15 @@ class HomeController extends Controller
    
     public function delete($id)
     {
-        $post = Person::find($id);
+        // $post = Person::find($id);
 
-        //$post->foreign('person_id')->references('id')->on('person');
-        $post->delete();
-        //return redirect('/home');
+        // //$post->foreign('person_id')->references('id')->on('person');
+        // $post->delete();
+        // //return redirect('/home');
+
+        DB::delete('delete from person where id = ?',[$id]);
+        echo "Record deleted successfully.<br/>";
+        echo '<a href = "/showScore">Click Here</a> to go back.';
     
     }
 

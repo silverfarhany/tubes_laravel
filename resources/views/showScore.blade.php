@@ -47,8 +47,8 @@
 												<td>{{ $Score->finaltask }}</td>
 												<td>{{ $Score->finalscore }}</td>
 												<td>
-													<a type="button" class="btn btn-transparent-warning font-weight-bold mr-2" href=""> Edit </a>
-													<a type="button" class="btn btn-transparent-danger font-weight-bold mr-2" href=""> Delete </a>
+													<a type="button" class="btn btn-transparent-warning font-weight-bold mr-2" href="editScore/{{ $Score->id }}"> Edit </a>
+													<a type="button" class="btn btn-transparent-danger font-weight-bold mr-2" href="showScore/delete/{{ $Score->id }}"> Delete </a>
 												</td>
 											</tr>  
 											@endforeach

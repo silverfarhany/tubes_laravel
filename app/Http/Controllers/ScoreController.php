@@ -56,14 +56,19 @@ class ScoreController extends Controller
         
     }
 
-    public function delete($id)
-    {
-        $post = Score::find($id);
-
-        //$post->foreign('person_id')->references('id')->on('person');
-        $post->delete();
-        //return redirect('/home');
-    
+    public function delete(Request $request, $id)
+    {        
+            DB::delete('delete from score where id = ?',[$id]);
+            echo "Record deleted successfully.<br/>";
+            echo '<a href = "/showScore">Click Here</a> to go back.';
     }
+    
+    public function edit($id)
+    {
+        $score = Score::find($id);
+        return view('/editScore');
+    }
+
+    
 
 }    

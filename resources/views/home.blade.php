@@ -55,7 +55,7 @@
 												</td>
 												<td>
 													<a type="button" class="btn btn-transparent-warning font-weight-bold mr-2" href="/home/edit/{{ $Person->id }}"> Edit </a>
-													<a type="button" class="btn btn-transparent-danger font-weight-bold mr-2" href="{{ route('home', ['id' => $Person->id ]) }}"> Delete </a>
+													<a type="button" class="btn btn-transparent-danger font-weight-bold mr-2" href=""> Delete </a>
 												</td>
 											</tr>  
 											@endforeach
