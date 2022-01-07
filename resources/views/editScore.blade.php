@@ -20,20 +20,19 @@
                                      </h3>
                                     </div>
                                     <!--begin::Form-->
-                                    <form action="/editScore/<?php echo $Score[0]->id; ?>" method="post" class="form" >
-                                        @csrf
-                                        <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+                                    <form action="/editScore" method="post" class="form" >
+                                        @csrf                                
                                      <div class="card-body">
                                       <div class="form-group form-group-last">
                                         <div class="form-group">
                                             <label>Member's Name</label>
-                                            <select class="form-control form-control-solid" name="id" value = '<?php echo$score[0]->person_id; ?>'>
-                                             
+                                            <select class="form-control form-control-solid" name="id">
+                                              <option value="{{ $score->id }}">{{ $nama }}</option>
                                             </select>
                                            </div>                                       
                                       <div class="form-group">
                                        <label>First Task Score</label>
-                                       <input type="number" value="<?php echo$score[0]->firsttask; ?>" class="form-control form-control-solid" placeholder="Input score" name="firsttask" required/>
+                                       <input type="number" value="{{ $score->week1 }}" class="form-control form-control-solid" placeholder="Input score" name="firsttask" required/>
                                        @error('firsttask')
                                         <div class="alert alert-danger">
                                           {{ $message }}
@@ -42,19 +41,19 @@
                                       </div>   
                                       <div class="form-group">
                                         <label>Second Task Score</label>
-                                        <input type="number" value="<?php echo$score[0]->scndtask; ?>" class="form-control form-control-solid" placeholder="Input score" name="scndtask" required/>
+                                        <input type="number" value="{{ $score->week2 }}" class="form-control form-control-solid" placeholder="Input score" name="scndtask" required/>
                                        </div>   
                                        <div class="form-group">
                                         <label>Third Task Score</label>
-                                        <input type="number" value="<?php echo$score[0]->thrdtask; ?>" class="form-control form-control-solid" placeholder="Input score" name="thrdtask" required/>
+                                        <input type="number" value="{{ $score->week3 }}" class="form-control form-control-solid" placeholder="Input score" name="thrdtask" required/>
                                        </div>  
                                        <div class="form-group">
                                         <label>Fourth Task Score</label>
-                                        <input type="number" value="<?php echo$score[0]->frthtask; ?>" class="form-control form-control-solid" placeholder="Input score" name="frthtask" required/>
+                                        <input type="number" value="{{ $score->week4 }}" class="form-control form-control-solid" placeholder="Input score" name="frthtask" required/>
                                        </div>   
                                        <div class="form-group">
                                         <label>Final Task Score</label>
-                                        <input type="number" value="<?php echo$score[0]->finaltask; ?>" class="form-control form-control-solid" placeholder="Input score" name="finaltask" required/>
+                                        <input type="number" value="{{ $score->finaltask }}" class="form-control form-control-solid" placeholder="Input score" name="finaltask" required/>
                                        </div>                                                                                                                
                                      <div class="card-footer">
                                       <button type="submit" class="btn btn-primary mr-2">Edit Score</button>

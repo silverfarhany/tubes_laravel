@@ -11,7 +11,6 @@ class memberController extends BaseController
 {
     public function index()
     {
-       $person = Person::get();
         return view('addMember');
     }
 
@@ -32,6 +31,40 @@ class memberController extends BaseController
         ]);
        
         $addPerson->save();
+        return redirect('/home');
     }
 
+    public function edit($id) {  
+        $person = Person::findOrFail($id);        
+        return view('editPerson',[
+            'person' => $person,
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+            'fullname' => 'required',
+            'email' => 'required',
+            'roll' => 'required',
+            'status' => 'required'                               
+        ]);      
+
+        $updatePerson = [
+            'name' => $request->fullname,
+            'roll' => $request->roll,
+            'email' => $request->email,
+            'status' => $request->status         
+        ];
+
+        Person::where('id',$request->id)->update($updatePerson);
+        return redirect('/home');
+    }
+
+    public function delete($id)
+    {
+        Person::find($id)->delete();
+        return redirect('/home');
+    }
 }

@@ -38,7 +38,8 @@
 											@foreach($score as $Score)
 											<tr>
 												<th scope="row">{{ $no++ }}</th>
-												<td>{{$Score->person_id}}													
+												<td>
+													{{$person->find($Score->person_id)->name}}											
 												</td>
 												<td>{{ $Score->week1 }}</td>
 												<td>{{ $Score->week2 }}</td>
@@ -48,7 +49,7 @@
 												<td>{{ $Score->finalscore }}</td>
 												<td>
 													<a type="button" class="btn btn-transparent-warning font-weight-bold mr-2" href="editScore/{{ $Score->id }}"> Edit </a>
-													<a type="button" class="btn btn-transparent-danger font-weight-bold mr-2" href="showScore/delete/{{ $Score->id }}"> Delete </a>
+													<a type="button" class="btn btn-transparent-danger font-weight-bold mr-2" href="deleteScore/{{ $Score->id }}"> Delete </a>
 												</td>
 											</tr>  
 											@endforeach

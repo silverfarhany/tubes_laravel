@@ -45,30 +45,64 @@ class ScoreController extends Controller
         ]);
 
         $addScore->save();
+        return redirect('/showScore');
 
         }
     
     public function showScore(Request $request)
     {
-        $score = DB::table('score')->select('id','person_id','week1','week2','week3','week4','finaltask','finalscore')->get();
-
-        return view('showScore')->with('score', $score);   
+        $score = Score::all();
+        $person = Person::select('id','name')->get();
+        return view('showScore',[
+            'score' => $score,
+            'person' => $person,
+        ]);   
         
     }
 
     public function delete(Request $request, $id)
-    {        
-            DB::delete('delete from score where id = ?',[$id]);
-            echo "Record deleted successfully.<br/>";
-            echo '<a href = "/showScore">Click Here</a> to go back.';
-    }
-    
-    public function edit($id)
     {
-        $score = Score::find($id);
-        return view('/editScore');
+        Score::find($id)->delete();
+        return redirect('/showScore');
+    }
+    
+    public function edit($id) {
+            
+        $score = Score::findOrFail($id);
+        $person = Person::select('name')->findOrFail($score->person_id);
+        return view('editScore',[
+            'score' => $score,
+            'nama' => $person->name,
+        ]);
     }
 
-    
+    public function update(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+            'firsttask' => 'required',
+            'scndtask' => 'required',
+            'thrdtask' => 'required',
+            'frthtask' => 'required',           
+            'finaltask' => 'required'           
+        ]);
 
+        $task1 = $request->firsttask;
+        $task2 = $request->scndtask;
+        $task3 = $request->thrdtask;
+        $task4 = $request->frthtask;
+        $finaltask = $request->finaltask;
+        $finalscore = ($task1+$task2+$task3+$task4+$finaltask)/5;
+
+        $updateScore = [
+            'week1' => $task1,
+            'week2' => $task2,
+            'week3' => $task3,
+            'week4' => $task4,
+            'finaltask' => $request->finaltask,
+            'finalscore' => $finalscore
+        ];
+        Score::where('id',$request->id)->update($updateScore);
+        return redirect('/showScore');
+    }
 }    

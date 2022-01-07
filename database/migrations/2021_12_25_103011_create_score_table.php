@@ -16,7 +16,7 @@ class CreateScoreTable extends Migration
     {
         Schema::create('score', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('person_id');
+            $table->foreignId('person_id')->references('id')->on('person');
             $table->mediumInteger('week1');
             $table->mediumInteger('week2');
             $table->mediumInteger('week3');
@@ -24,8 +24,6 @@ class CreateScoreTable extends Migration
             $table->mediumInteger('finaltask');
             $table->mediumInteger('finalscore');
             $table->timestamps();
-
-            $table->foreign('person_id')->references('id')->on('person');
         });
     }
 

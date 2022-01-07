@@ -1,11 +1,9 @@
 Admin & Teacher :
-- menampilkan nama dari person_id yang ada
 - fungsiin login
 - fungsiin logout
-- Update data person (only admin)
-- Delete data person (only admin)
+- ganti icon di tiap menu
+- icon aktif dan ga aktif
 - hapus button add person utk teacher
-- Update data Score
 
 
 Member :

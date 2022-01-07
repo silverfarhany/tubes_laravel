@@ -16,7 +16,7 @@
 								</div>
 								<!--end::Row-->
 								<a type="button" class="btn font-weight-bold btn-light-success mr-2" href="/addMember">Add Person</a>
-								<br> </br>	
+								<br>
 								<h2 for="table table-dark rounded" class="center"> Data Person</h2>	
 								@if ($person->count() > 0)		
 									<table class="table table-dark rounded pt-6" style="center">
@@ -54,8 +54,8 @@
 													</span>
 												</td>
 												<td>
-													<a type="button" class="btn btn-transparent-warning font-weight-bold mr-2" href="/home/edit/{{ $Person->id }}"> Edit </a>
-													<a type="button" class="btn btn-transparent-danger font-weight-bold mr-2" href=""> Delete </a>
+													<a type="button" class="btn btn-transparent-warning font-weight-bold mr-2" href="editPerson/{{ $Person->id }}"> Edit </a>
+													<a type="button" class="btn btn-transparent-danger font-weight-bold mr-2" href="deletePerson/{{ $Person->id }}"> Delete </a>
 												</td>
 											</tr>  
 											@endforeach
