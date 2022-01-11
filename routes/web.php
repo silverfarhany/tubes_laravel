@@ -24,23 +24,22 @@ Route::get('/', function () {
 });
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'actionlogout'])->name('logout');
 Route::post('/login', [LoginController::class, 'actionlogin'])->name('actionlogin');
-
 Route::get('/regis', [RegisController::class, 'regis'])->name('regis');
-Route::post('/', [RegisController::class, 'actionregis'])->name('actionregis');
+Route::post('/regis', [RegisController::class, 'actionregis'])->name('actionregis');
 
-Route::get('/home', [HomeController::class, 'home'])->name('home')->name('home');
+Route::get('/home', [HomeController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/dashboard', [HomeController::class, 'studentHome'])->name('studentHome')->middleware('auth');
 
-Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
-
-Route::get('/inputScore', [ScoreController::class, 'Score'])->name('Score');
+Route::get('/inputScore', [ScoreController::class, 'Score'])->name('Score')->middleware('auth');
 Route::post('/inputScore', [ScoreController::class, 'inputScore'])->name('inputScore');
-Route::get('/showScore',  [ScoreController::class, 'showScore'])->name('showScore');
+Route::get('/showScore',  [ScoreController::class, 'showScore'])->name('showScore')->middleware('auth');
 Route::get('/deleteScore/{id}', [ScoreController::class, 'delete'])->name('showScore');
 Route::get('/editScore/{id}', [ScoreController::class, 'edit']);
 Route::post('/editScore', [ScoreController::class, 'update'])->name('update');
 
-Route::get('/addMember', [memberController::class, 'index'])->name('index');
+Route::get('/addMember', [memberController::class, 'index'])->name('index')->middleware('auth');
 Route::post('/addMember', [memberController::class, 'storeDataPost'])->name('storeDataPost');
 Route::get('/editPerson/{id}', [memberController::class, 'edit']);
 Route::post('/editPerson', [memberController::class, 'update'])->name('update');

@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
+use Session;
+use App\Models\User;
 use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class RegisController extends Controller
 {
     public function regis()
     {
-        if (Auth::check()) {
+        if (Session::get('roll') == 2) {
             return redirect('home');
+        }elseif(Session::get('roll') == 1){
+            return redirect('/dashboard');
         }else{
             return view('regis');
         }
@@ -26,11 +30,13 @@ class RegisController extends Controller
             'password' => 'required|min:8',
             'cpassword' => 'required|min:8'
         ]);
-        $data = new Account([
+        $person_id = Person::where('email',$request->email)->select('id')->first();
+        $data = new User([
+            'person_id' => $person_id->id,
             'email' => $request->get('email'),
-            'password' => $request->get('password')            
+            'password' => hash::make($request->get('password'))        
         ]);
         $data->save();
-        
+        return back()->with('loginRegister','Register Succes! You can LogIn Now');
     }
 }

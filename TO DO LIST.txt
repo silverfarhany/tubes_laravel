@@ -1,9 +1,9 @@
 Admin & Teacher :
 - fungsiin login
 - fungsiin logout
-- ganti icon di tiap menu
 - icon aktif dan ga aktif
 - hapus button add person utk teacher
+- warning kl berhasil / gagal daftar
 
 
 Member :

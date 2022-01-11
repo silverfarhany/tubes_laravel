@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
-use App\Models\Account;
+use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,8 +13,10 @@ class LoginController extends Controller
 {
     public function login()
     {
-        if (Auth::check()) {
+        if (Session::get('roll') == 2){
             return redirect('home');
+        }elseif(Session::get('roll') == 1){
+            return redirect('/dashboard');
         }else{
             return view('login');
         }
@@ -23,19 +25,28 @@ class LoginController extends Controller
     public function actionlogin(Request $request)
     {
         $login = $request->validate([
-            'email' => 'required|email:dns|exists:Account,email',
+            'email' => 'required|email:dns|exists:Person,email',
             'password' => 'required',
         ]);
-        if (auth()->attempt($login)) {
-            dd('ok');
-            //$request->session()->regenerate();
+        if (Auth::attempt($login)) {
+            $request->session()->regenerate();
 
-            //return redirect()->intended('/home');
+            $session_id_roll = Person::where('email',$request->email)->select('roll','id')->first();
+            $request->session()->put('roll', $session_id_roll->roll);
+            $request->session()->put('id', $session_id_roll->id);
+
+            if(Session::get('roll') == 2){
+                return redirect()->intended('/home');
+            }else{
+                return redirect()->intended('/dashboard');
+            }
         }
+        return back()->with('loginRegister','Login Failed!');
     }
 
     public function actionlogout()
     {
+        Session::flush();
         Auth::logout();
         return redirect('/');
     }

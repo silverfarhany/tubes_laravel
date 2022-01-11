@@ -13,9 +13,15 @@ class ScoreController extends Controller
 {
     public function Score()
     {
-        $persons = Person::all();
-        return view('inputScore', compact('persons'));
+        if(Session::get('roll') == 2){
+            $persons = Person::all();
+            return view('inputScore', compact('persons'));
+        }elseif(Session::get('roll') == 1){
+            return redirect('/dashboard');
+        }else{
+            return view('login');
         }
+    }
     
     public function inputScore(Request $request)
     {
@@ -51,13 +57,18 @@ class ScoreController extends Controller
     
     public function showScore(Request $request)
     {
-        $score = Score::all();
-        $person = Person::select('id','name')->get();
-        return view('showScore',[
-            'score' => $score,
-            'person' => $person,
-        ]);   
-        
+        if(Session::get('roll') == 2){
+            $score = Score::all();
+            $person = Person::select('id','name')->get();
+            return view('showScore',[
+                'score' => $score,
+                'person' => $person,
+            ]);
+        }elseif(Session::get('roll') == 1){
+            return redirect('/dashboard');
+        }else{
+            return view('login');
+        }
     }
 
     public function delete(Request $request, $id)

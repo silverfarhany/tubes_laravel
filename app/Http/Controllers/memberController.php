@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,8 +11,14 @@ use Illuminate\Routing\Controller as BaseController;
 class memberController extends BaseController
 {
     public function index()
-    {
-        return view('addMember');
+    {   
+        if(Session::get('roll') == 2){
+            return view('addMember');
+        }elseif(Session::get('roll') == 1){
+            return redirect('/dashboard');
+        }else{
+            return view('login');
+        }
     }
 
 

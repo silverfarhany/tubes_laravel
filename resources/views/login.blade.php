@@ -63,8 +63,6 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 							<img src="https://preview.keenthemes.com/keen/theme/demo1/dist/assets/media/logos/logo-6.svg" alt="logo" class="h-50px" />
 						</a>
 						<!--end::Logo-->
-						<span class="text-muted font-weight-bold font-size-h4">New Here? 
-						<a href="javascript:;" id="kt_login_signup" class="text-primary font-weight-bolder">Create an Account</a></span>
 					</div>
 				</div>
 				<!--end::Header-->
@@ -82,6 +80,11 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 										<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome to KoreanCourse</h3>
 									</div>
 									<!--begin::Title-->
+									@if(session()->has('loginRegister'))
+									<div class="alert alert-danger alert-dismissible fade show" role="alert">
+										{{ session('loginRegister') }}
+									</div>
+									@endif
 									<!--begin::Form group-->
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Email</label>
@@ -109,89 +112,14 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 									<!--end::Form group-->
 									<!--begin::Action-->
 									<div class="pb-lg-0 pb-5">
-										<button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">LogIn</button>																		
+										<button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3" >LogIn</button>
+										<a type="button" href="/regis" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Regis</a>																		
 									</div>
 									<!--end::Action-->
 								</form>
 								<!--end::Form-->
 							</div>
 							<!--end::Signin-->
-
-							
-							<!--begin::Signup-->
-							<div class="login-form login-signup">
-								<!--begin::Form-->
-								<form action="/" method="post" class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate" id="kt_login_signup_form">
-									@csrf
-									<!--begin::Title-->
-									<div class="pb-13 pt-lg-0 pt-5">
-										<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Sign Up</h3>
-										<p class="text-muted font-weight-bold font-size-h4">Enter your details to create your account</p>
-									</div>
-									<!--end::Title-->
-									<!--begin::Form group-->
-									<div class="form-group ">
-										@csrf
-										<input class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6  @error('fullname') is-invalid @enderror" type="text" placeholder="Full Name" name="fullname" autocomplete="off" />
-									</div>
-									@error('fullname')
-									<div class="alert alert-danger">
-										{{ $message }}
-									</div>
-									@enderror
-									<!--end::Form group-->
-									<!--begin::Form group-->
-									<div class="form-group">
-										<input class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6  @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email" autocomplete="off" />
-									</div>
-									@error('email')
-									<div class="alert alert-danger">
-										{{ $message }}
-									</div>
-									@enderror
-									<!--end::Form group-->
-									
-									<!--begin::Form group-->
-									<div class="form-group">
-										<input class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6  @error('password') is-invalid @enderror" type="password" placeholder="Password" name="password" autocomplete="off" />
-									</div>
-									@error('password')
-									<div class="alert alert-danger">
-										{{ $message }}
-									</div>
-									@enderror
-									<!--end::Form group-->
-									<!--begin::Form group-->
-									<div class="form-group">
-										<input class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6  @error('cpassword') is-invalid @enderror" type="password" placeholder="Confirm password" name="cpassword" autocomplete="off" />
-									</div>
-									@error('cpassword')
-									<div class="alert alert-danger">
-										{{ $message }}
-									</div>
-									@enderror
-									<!--end::Form group-->
-									<!--begin::Form group-->
-									<div class="form-group">
-										<div class="checkbox-inline">
-											<label class="checkbox">
-											<input type="checkbox" name="agree" />
-											<span></span>I Agree the 
-											<a href="#" class="ml-1">terms and conditions</a>.</label>
-										</div>
-									</div>
-									<!--end::Form group-->
-									<!--begin::Form group-->
-									<div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
-										<button type="submit" id="kt_login_signup_form" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Submit</button>
-										<button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Cancel</button>
-									</div>
-									<!--end::Form group-->
-								</form>
-								<!--end::Form-->
-							</div>
-							<!--end::Signup-->
-							
 							<!--begin::Forgot-->
 							<div class="login-form login-forgot">
 								<!--begin::Form-->

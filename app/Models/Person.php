@@ -11,7 +11,7 @@ class Person extends Model
     protected $table = 'person';
     
     public function getAccount(){
-        return $this->belongsTo(Account::class);
+        return $this->belongsTo(User::class);
     }
 
     public function getScore(){
@@ -23,4 +23,3 @@ class Person extends Model
 }
 
 
-// ('App\Account', 'account_id', 'id');
