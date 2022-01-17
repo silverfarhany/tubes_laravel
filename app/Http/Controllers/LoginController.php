@@ -31,9 +31,10 @@ class LoginController extends Controller
         if (Auth::attempt($login)) {
             $request->session()->regenerate();
 
-            $session_id_roll = Person::where('email',$request->email)->select('roll','id')->first();
+            $session_id_roll = Person::where('email',$request->email)->select('roll','id','name')->first();
             $request->session()->put('roll', $session_id_roll->roll);
             $request->session()->put('id', $session_id_roll->id);
+            $request->session()->put('name', $session_id_roll->name);
 
             if(Session::get('roll') == 2){
                 return redirect()->intended('/home');

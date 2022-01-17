@@ -29,7 +29,9 @@ class HomeController extends Controller
         if(Session::get('roll') != 2){
             $data_person = Person::where('id',Session::get('id'))->first();
             $data_score = Score::where('person_id',Session::get('id'))->first();
-            return view('sertif')->with('nama', $data_person->name);
+            return view('sertif',[
+                'nama' => $data_person->name,
+            ]);
             # return..
         }elseif(Session::get('roll') != 1){
             return redirect('home');
