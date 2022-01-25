@@ -145,39 +145,43 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                 <tbody>
                     <tr>
                         <td width="200px">Your Name</td>
-                        <td>: </td>
+                        <td>: {{ $person->name }} </td>
                     </tr>
                     <tr>
                         <td>Your First task Score</td>
-                        <td>: </td>
+                        <td>: {{ $score->week1 }}</td>
                     </tr>
                     <tr>
                         <td>Your Second task score</td>
-                        <td>: </td>
+                        <td>: {{ $score->week2 }}</td>
                     </tr>
                     <tr>
                         <td>Your Third task score</td>
-                        <td>: </td>
+                        <td>: {{ $score->week3 }}</td>
                     </tr>
                     <tr>
                         <td>Your Fourths task score</td>
-                        <td>: </td>
+                        <td>: {{ $score->week4 }}</td>
                     </tr>
                     <tr>
                         <td>Your Final task score</td>
-                        <td>: </td>
+                        <td>: {{ $score->finaltask }}</td>
                     </tr>
                     <tr>
                         <td>Your Final score</td>
-                        <td>: </td>
-                    </tr>
+                        <td>: {{ $score->finalscore }}</td>
+                    </tr>                    
                 </tbody>
             </table>
-            <!--end::Table-->
+            <!--end::Table-->   
+            <br> </br>        
+            <a href="/logout" type="submit" class="btn btn-danger">Logout</a>            
+            <br> </br>
+        
         </div>
 
     </div>
-    @php
+    {{--@php
         header('content-type:image/jpeg');
         $font = Storage::path('\public\BRUSHSCI.TTF');
         $image = imagecreatefromjpeg(Storage::path('\public\certificate.jpg'));
@@ -190,7 +194,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
         $path = $nama . '.jpg';
     @endphp
     <a src="<?php Storage::path("\public\storage/$path"); ?>"> </a>
-</div>
+</div> --}}
 
 </div>
 <footer>

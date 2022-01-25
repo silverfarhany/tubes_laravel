@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Person;
-use App\Models\Score;
 use Session;
+use App\Models\Score;
+use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 
 
@@ -30,7 +31,8 @@ class HomeController extends Controller
             $data_person = Person::where('id',Session::get('id'))->first();
             $data_score = Score::where('person_id',Session::get('id'))->first();
             return view('sertif',[
-                'nama' => $data_person->name,
+                'person' => $data_person,
+                'score' => $data_score
             ]);
             # return..
         }elseif(Session::get('roll') != 1){

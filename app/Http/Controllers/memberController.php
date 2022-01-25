@@ -25,7 +25,7 @@ class memberController extends BaseController
     public function storeDataPost(Request $request){
         $validated = $request->validate([
             'fullname' => 'required|max:255',
-            'email' => 'required|email:dns|unique:person',
+            'email' => 'required|unique:person',
             'startdate' => 'required|date'
         ]);
 

@@ -1,10 +1,6 @@
-Admin & Teacher :
-- fungsiin login
-- fungsiin logout
-- icon aktif dan ga aktif
-- hapus button add person utk teacher
-- warning kl berhasil / gagal daftar
+Teacher :
 
+- icon aktif dan ga aktif
+- input score only for member yg blm ada nilai
 
 Member :
--Bikin halaman dashboard aja, isi nya tabel nilai member ybs

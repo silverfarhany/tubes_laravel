@@ -15,7 +15,7 @@ class Person extends Model
     }
 
     public function getScore(){
-        return $this->belongsTo(Score::class);
+        return $this->hasOne(Score::class);
     }
     
         

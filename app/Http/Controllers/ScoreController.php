@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ScoreController extends Controller
 {
-    public function Score()
+    public function Score(Request $request)
     {
         if(Session::get('roll') == 2){
-            $persons = Person::all();
+            $persons = Person::where('roll', 1)->has('getScore','<',1)->get();
             return view('inputScore', compact('persons'));
         }elseif(Session::get('roll') == 1){
             return redirect('/dashboard');
