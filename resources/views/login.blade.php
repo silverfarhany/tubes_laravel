@@ -100,7 +100,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 									<div class="form-group">
 										<div class="d-flex justify-content-between mt-n5">
 											<label class="font-size-h6 font-weight-bolder text-dark pt-5">Password</label>
-											<a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Forgot Password ?</a>
+											{{-- <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Forgot Password ?</a> --}}
 										</div>
 										<input class="form-control form-control-solid h-auto p-6 rounded-lg @error('password') is-invalid @enderror" type="password" name="password" autocomplete="off" />
 									</div>
@@ -125,10 +125,10 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 								<!--begin::Form-->
 								<form class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate" id="kt_login_forgot_form">
 									<!--begin::Title-->
-									<div class="pb-13 pt-lg-0 pt-5">
+									{{-- <div class="pb-13 pt-lg-0 pt-5">
 										<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Forgotten Password ?</h3>
 										<p class="text-muted font-weight-bold font-size-h4">Enter your email to reset your password</p>
-									</div>
+									</div> --}}
 									<!--end::Title-->
 									<!--begin::Form group-->
 									<div class="form-group">
